@@ -88,9 +88,9 @@ const Login = () => {
             실제 프로젝트에서는 a 태그 대신 react-router-dom의 Link 컴포넌트를 사용합니다.
             예: <Link to="/signup">계정 가입</Link>
           */}
-          <a href="sign up" onClick={(e) => e.preventDefault()}>
+          <Link to="/signup">
             계정 가입
-          </a>
+          </Link>
           <span className="separator">|</span>
           <a href="#" onClick={(e) => e.preventDefault()}>
             계정 찾기
