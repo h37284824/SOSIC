@@ -1,0 +1,145 @@
+.slide-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 화면 전체 높이 */
+  width: 100vw; /* 화면 전체 너비 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 슬라이드 애니메이션을 유지하면서 중앙정렬 */
+.slide-signup, .slide-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-signup {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.slide-signup {
+  z-index: 2;
+}
+.slide-signup.slide-left {
+  transform: translateX(-100%);
+}
+
+.slide-profile {
+  z-index: 3;
+  transform: translateX(100%);
+}
+.slide-profile.slide-in {
+  transform: translateX(0);
+}
+
+.profile-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #2d3748;
+}
+
+.profile-image-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-nickname-input {
+  display: block;
+  margin: 0 auto 16px auto;
+  width: 70%;
+  padding: 10px 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+  /* 중앙정렬을 위해 margin을 0으로, flex column 유지 */
+.signup-container {
+  max-width: 360px;
+  margin: 0;
+  padding: 40px 32px 24px 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-logo {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #262626;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
+}
+
+.signup-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-container input {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+.signup-container input:focus {
+  border-color: #a3a3a3;
+  outline: none;
+}
+
+.signup-container button {
+  padding: 10px;
+  background: #3897f0;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 1px 4px rgba(56,151,240,0.08);
+  transition: background 0.2s;
+}
+.signup-container button:hover {
+  background: #2563eb;
+}
+
+.signup-bottom {
+  margin-top: 28px;
+  font-size: 0.98rem;
+  color: #555;
+}
+.signup-bottom a {
+  color: #3897f0;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 4px;
+}
+.signup-bottom a:hover {
+  text-decoration: underline;
+}
