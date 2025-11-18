@@ -2,9 +2,13 @@
 
 .login-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  height: 100vh; /* 화면 전체 높이 */
+  width: 100vw; /* 화면 전체 너비 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: #f0f2f5;
   font-family: Arial, sans-serif;
 }
