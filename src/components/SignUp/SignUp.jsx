@@ -23,7 +23,7 @@ function SignUp() {
 						<button type="submit">회원가입</button>
 					</form>
 					<div className="signup-bottom">
-						이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+						이미 계정이 있으신가요? <Link to="/user/login">로그인</Link>
 					</div>
 				</div>
 			</div>

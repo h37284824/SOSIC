@@ -1,76 +1,76 @@
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import "./Login.css";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './Login.css'; // ★ CSS 파일 import 필수
 
 const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setIsLoading(true);
-		setError("");
-		if (!email || !password) {
-			setError("이메일과 비밀번호를 모두 입력해주세요.");
-			setIsLoading(false);
-			return;
-		}
-		try {
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-			if (email === "user@example.com" && password === "password123") {
-				alert("로그인 성공!");
-			} else {
-				throw new Error("이메일 또는 비밀번호가 잘못되었습니다.");
-			}
-		} catch (err) {
-			setError(err.message);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
 
-	return (
-		<div className="login-container">
-			<form className="login-form" onSubmit={handleSubmit}>
-				<h2>로그인</h2>
-				{error && <p className="error-message">{error}</p>}
-				<div className="input-group">
-					<label htmlFor="email">이메일</label>
-					<input
-						type="email"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						placeholder="user@example.com"
-						disabled={isLoading}
-					/>
-				</div>
-				<div className="input-group">
-					<label htmlFor="password">비밀번호</label>
-					<input
-						type="password"
-						id="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="password123"
-						disabled={isLoading}
-					/>
-				</div>
-				<button type="submit" disabled={isLoading}>
-					{isLoading ? "로그인 중..." : "로그인"}
-				</button>
-				<div className="extra-links">
-					<Link to="/signup">계정 가입</Link>
-					<span className="separator">|</span>
-					<a href="#" onClick={(e) => e.preventDefault()}>
-						계정 찾기
-					</a>
-				</div>
-			</form>
-		</div>
-	);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(''); // 에러 초기화
+
+    const formData = new URLSearchParams();
+    formData.append('username', credentials.username);
+    formData.append('password', credentials.password);
+
+    try {
+      const response = await axios.post('http://localhost:8080/user/login', formData, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        withCredentials: true
+      });
+
+      if (response.status === 200) {
+        const targetUrl = response.data.redirectUrl || '/home';
+        navigate(targetUrl);
+      }
+    } catch (err) {
+      setError('아이디 또는 비밀번호가 일치하지 않습니다.' + err);
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <h2>로그인</h2>
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <label htmlFor="username">아이디</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="아이디를 입력하세요"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <label htmlFor="password">비밀번호</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="비밀번호를 입력하세요"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-button">로그인</button>
+        </form>
+
+        {error && <div className="error-message">{error}</div>}
+      </div>
+    </div>
+  );
 };
 
 export default Login;

@@ -1,117 +1,76 @@
-/* src/components/Login.css */
-
 .login-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh; /* 화면 전체 높이 */
-  width: 100vw; /* 화면 전체 너비 */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f0f2f5;
-  font-family: Arial, sans-serif;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1e2f; /* 짙은 남색 배경 */
 }
 
-.login-form {
-  background-color: white;
+.login-card {
+  background-color: #27293d;
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
+  max-width: 380px;
+  text-align: center;
+  color: #ffffff;
 }
 
-.login-form h2 {
-  margin-top: 0;
-  margin-bottom: 24px;
-  text-align: center;
-  color: #333;
+.login-card h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
 .input-group {
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .input-group label {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
+  color: #adb5bd;
+  font-size: 13px;
 }
 
 .input-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  background-color: #1e1e2f;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: white;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .input-group input:focus {
+  border-color: #e14eca; /* 포인트 컬러 (자주색) */
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-button {
+.login-button {
   width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
+  padding: 14px;
+  background: linear-gradient(45deg, #e14eca, #ba54f5); /* 그라데이션 버튼 */
   color: white;
+  border: none;
+  border-radius: 6px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(225, 78, 202, 0.4);
+  transition: transform 0.2s;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
-
-button:disabled {
-  background-color: #a0c3e6;
-  cursor: not-allowed;
+.login-button:active {
+  transform: scale(0.98);
 }
 
 .error-message {
-  color: #dc3545;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: center;
+  color: #ff6b6b;
   font-size: 14px;
-}
-
-/* src/components/Login.css */
-
-/* ... (기존 CSS 코드는 여기에 그대로 둡니다) ... */
-
-/* [추가된 부분] 계정 가입/찾기 링크 스타일 */
-.extra-links {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.extra-links a {
-  font-size: 14px;
-  color: #555;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.extra-links a:hover {
-  color: #007bff;
-  text-decoration: underline;
-}
-
-.extra-links .separator {
-  margin: 0 10px;
-  color: #ccc;
+  margin-top: 15px;
 }
